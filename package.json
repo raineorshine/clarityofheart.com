@@ -1,0 +1,9 @@
+{
+  "dependencies": {
+    "body-parser": "^1",
+    "express": "^4",
+    "jade": "^1",
+    "newrelic": "^1",
+    "serve-favicon": "^2"
+  }
+}

@@ -1,0 +1,38 @@
+* { box-sizing: border-box; }
+img { max-width: 100%; }
+body {
+	font-family: Helvetica, Arial, Sans-Serif;
+	font-weight: 300;
+	font-size: 18px;
+	color: #121212;
+	background-color: #fff;
+}
+
+.spread { 
+	width: 100%;
+	height: 100%; 
+}
+.block { display: inline-block; }
+
+.center {
+	display: table;
+}
+
+.center > * {
+	display: table-cell;
+	vertical-align: middle;
+	text-align: center;
+}
+
+.pad {
+	padding: 25px;
+}
+
+.heart {
+	font-size: 32px;
+	color: tomato;
+}
+
+.text-dim {
+	color: #b2b2b2;
+}
