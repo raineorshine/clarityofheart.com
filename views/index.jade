@@ -9,11 +9,11 @@ head
   link(rel='stylesheet' type='text/css' href='/styles/main.css')
   include analytics.html
 
-mixin triangle(triangleSize=50, triangleBorderSize=3)
+mixin triangle(triangleSize=40, triangleBorderSize=2)
   svg.triangle-svg(width=triangleSize height=triangleSize viewBox="0 0 " + (triangleSize + 10) + " " + (triangleSize + 10) xmlns="http://www.w3.org/2000/svg")
     polygon.triangle(points=((triangleSize + triangleBorderSize)/2) + "," + triangleBorderSize*3 + " " + triangleSize + "," + triangleSize + " " + triangleBorderSize + "," + triangleSize)
 
-mixin triangleUp(triangleSize=50, triangleBorderSize=3)
+mixin triangleUp(triangleSize=40, triangleBorderSize=2)
   svg.triangle-up-svg(width=triangleSize height=triangleSize viewBox="0 0 " + (triangleSize + 10) + " " + (triangleSize + 10) xmlns="http://www.w3.org/2000/svg")
     polygon.triangle(points=
       ((triangleSize + triangleBorderSize)/2) + "," + (triangleSize - triangleBorderSize*3) + " " +
@@ -34,10 +34,10 @@ mixin triangle-row(numTrianglesInRow=7)
         +triangleUp
       +triangle
 
-body.spread
+mixin site(title1, title2, options={})
   - numRowsTop = 3
   - numRowsBottom = 5
-  .spread.center.pad
+  .spread.center.pad&attributes(attributes)
     .center-wrapper
       - for (var r=0; r<numRowsTop; r++)
         +triangle-row
@@ -46,20 +46,71 @@ body.spread
         .line-one Raine
         .line-two Revere
       hr
-      h2: i Contemplative Psychotherapist
-      h2: i Cryptocurrency Engineer
+      h2#title1: i= title1
+      h2#title2: i= title2
       .pad-sm
 
-      p 
-        | e: 
-        a(href='mailto:raine@clarityofheart.com') raine@clarityofheart.com
-      p 
-        | tw: 
-        a(href='https://twitter.com/metaraine') @metaraine
-      p 
-        | gh: 
-        a(href='https://github.com/raineorshine') raineorshine
+      - if (options.emailStatic)
+        p 
+          | e: raine@clarityofheart.com
+      - if (options.phone !== false)
+        p 
+          | e: 720-319-8080
+      - if (options.email)
+        p 
+          | e: 
+          a(href='mailto:raine@clarityofheart.com') raine@clarityofheart.com
+      - if (options.twitter !== false)
+        p 
+          | tw: 
+          a(href='https://twitter.com/metaraine') @metaraine
+      - if (options.github !== false)
+        p 
+          | gh: 
+          a(href='https://github.com/raineorshine') raineorshine
+      - if (options.space)
+        div(style="margin-top: 40px;")
       .pad-sm
 
       - for (var r=0; r<numRowsBottom; r++)
         +triangle-row
+
+body.spread(onmousemove="move()")
+  +site("Contemplative Psychotherapist", "Cryptocurrency Engineer", { twitter: false, github: false, emailStatic: true, space: true }).site-therapy
+  +site("Contemplative Psychotherapist", "Cryptocurrency Engineer", { email: true, phone: false }).site-engineering
+
+  script(type="text/javascript").
+    /*! modernizr 3.5.0 (Custom Build) | MIT *
+     * https://modernizr.com/download/?-touchevents-setclasses !*/
+    !function(e,n,t){function o(e,n){return typeof e===n}function s(){var e,n,t,s,a,i,r;for(var l in c)if(c.hasOwnProperty(l)){if(e=[],n=c[l],n.name&&(e.push(n.name.toLowerCase()),n.options&&n.options.aliases&&n.options.aliases.length))for(t=0;t<n.options.aliases.length;t++)e.push(n.options.aliases[t].toLowerCase());for(s=o(n.fn,"function")?n.fn():n.fn,a=0;a<e.length;a++)i=e[a],r=i.split("."),1===r.length?Modernizr[r[0]]=s:(!Modernizr[r[0]]||Modernizr[r[0]]instanceof Boolean||(Modernizr[r[0]]=new Boolean(Modernizr[r[0]])),Modernizr[r[0]][r[1]]=s),f.push((s?"":"no-")+r.join("-"))}}function a(e){var n=u.className,t=Modernizr._config.classPrefix||"";if(p&&(n=n.baseVal),Modernizr._config.enableJSClass){var o=new RegExp("(^|\\s)"+t+"no-js(\\s|$)");n=n.replace(o,"$1"+t+"js$2")}Modernizr._config.enableClasses&&(n+=" "+t+e.join(" "+t),p?u.className.baseVal=n:u.className=n)}function i(){return"function"!=typeof n.createElement?n.createElement(arguments[0]):p?n.createElementNS.call(n,"http://www.w3.org/2000/svg",arguments[0]):n.createElement.apply(n,arguments)}function r(){var e=n.body;return e||(e=i(p?"svg":"body"),e.fake=!0),e}function l(e,t,o,s){var a,l,f,c,d="modernizr",p=i("div"),h=r();if(parseInt(o,10))for(;o--;)f=i("div"),f.id=s?s[o]:d+(o+1),p.appendChild(f);return a=i("style"),a.type="text/css",a.id="s"+d,(h.fake?h:p).appendChild(a),h.appendChild(p),a.styleSheet?a.styleSheet.cssText=e:a.appendChild(n.createTextNode(e)),p.id=d,h.fake&&(h.style.background="",h.style.overflow="hidden",c=u.style.overflow,u.style.overflow="hidden",u.appendChild(h)),l=t(p,e),h.fake?(h.parentNode.removeChild(h),u.style.overflow=c,u.offsetHeight):p.parentNode.removeChild(p),!!l}var f=[],c=[],d={_version:"3.5.0",_config:{classPrefix:"",enableClasses:!0,enableJSClass:!0,usePrefixes:!0},_q:[],on:function(e,n){var t=this;setTimeout(function(){n(t[e])},0)},addTest:function(e,n,t){c.push({name:e,fn:n,options:t})},addAsyncTest:function(e){c.push({name:null,fn:e})}},Modernizr=function(){};Modernizr.prototype=d,Modernizr=new Modernizr;var u=n.documentElement,p="svg"===u.nodeName.toLowerCase(),h=d._config.usePrefixes?" -webkit- -moz- -o- -ms- ".split(" "):["",""];d._prefixes=h;var m=d.testStyles=l;Modernizr.addTest("touchevents",function(){var t;if("ontouchstart"in e||e.DocumentTouch&&n instanceof DocumentTouch)t=!0;else{var o=["@media (",h.join("touch-enabled),("),"heartz",")","{#modernizr{top:9px;position:absolute}}"].join("");m(o,function(e){t=9===e.offsetTop})}return t}),s(),a(f),delete d.addTest,delete d.addAsyncTest;for(var v=0;v<Modernizr._q.length;v++)Modernizr._q[v]();e.Modernizr=Modernizr}(window,document);
+
+  script(type="text/javascript").
+    const h = document.body.offsetHeight
+    const w = document.body.offsetWidth
+    const therapy = document.getElementsByClassName('site-therapy')[0]
+    const engineering = document.getElementsByClassName('site-engineering')[0]
+
+    if (!Modernizr.touchevents) {
+
+
+
+      document.getElementsByTagName('body')[0].onmousemove = function move(e) {
+
+        // out-of-focus
+        const clientX = e.clientX / 20 // sensitivity
+        const clientY = e.clientY / 20
+        const modX = clientX % 10
+        const modY = clientY % 10
+        const x = modX < 5 ? modX : 5 - clientX % 5
+        const y = modY < 5 ? modY : 5 - clientY % 5
+
+        // distance to center
+        const xCenter = Math.floor(Math.abs(e.clientX - w/2)) / 2 + w/4
+        const yCenter = Math.floor(Math.abs(e.clientY - h/2)) / 2 + w/4
+
+        therapy.style.left = ((w/2) * (xCenter < 0 ? 1 : -1) + (xCenter))/1.2 + 'px'
+        //- therapy.style.top = (y) + 'px'
+        engineering.style.left = ((w/2) * (xCenter < 0 ? 1 : -1) + w - (xCenter))/1.2 + 'px'
+        //- engineering.style.top = (5 - y) + 'px'
+      }
+    }

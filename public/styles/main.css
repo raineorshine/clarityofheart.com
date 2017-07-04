@@ -10,24 +10,59 @@ body {
 	background-color: rgb(240,239,247);
 }
 
-.line-one {
-	margin-bottom: 2px;
-	font-size: 36px;
-}
-.line-two {
-	font-size: 46px;
-}
-
 h2 {
-	font-size: 22px;
+	font-size: 18px;
 	padding: 0;
 	margin-top: 0;
 	margin-bottom: 10px;
 }
 
 hr {
-	width: 80px;
+	width: 64px;
 	border: solid 1px rgb(196,169,164);
+}
+
+p {
+	font-size: 14px;
+}
+
+.site-therapy {
+	position: absolute;
+	color: rgb(196,169,264);
+	display: none !important;
+}
+
+html:not(.touchevents) .site-therapy {
+	display: table !important;
+}
+
+html:not(.touchevents) .site-therapy #title2 {
+	display: none;
+}
+html:not(.touchevents) .site-engineering #title1 {
+	display: none;
+}
+
+.site-engineering {
+	position: relative;
+	top: 5px;
+	left: 5px;
+}
+
+.site-therapy .triangle {
+	stroke: rgb(196,169,264);
+}
+
+.site-engineering .triangle {
+	stroke: rgb(196,169,164);
+}
+
+.line-one {
+	margin-bottom: 2px;
+	font-size: 29px;
+}
+.line-two {
+	font-size: 39px;
 }
 
 .spread {
@@ -65,14 +100,13 @@ hr {
 
 .triangle {
 	fill: transparent;
-	stroke: rgb(196,169,164);
-	stroke-width: 3px;
+	stroke-width: 2px;
 }
 
 /* shift upside-down triangles-left */
 .triangle-up-svg {
-	margin-left: -20px;
-	margin-right: -20px;
+	margin-left: -16px;
+	margin-right: -16px;
 }
 
 .triangle-row-odd {
