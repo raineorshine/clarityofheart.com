@@ -114,3 +114,12 @@ html:not(.touchevents) .site-engineering #title1 {
 	margin-bottom: -5px;
 	margin-left: 2px;
 }
+
+@media screen and ( max-height: 700px ){
+	.triangle-row:nth-child(3n),
+	.triangle-row:nth-child(3n),
+	.triangle-row:nth-child(4n),
+	.triangle-row:nth-child(5n) {
+		display: none;
+	}
+}
