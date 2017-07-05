@@ -1,125 +1,173 @@
-/* gold: rgb(196,169,164)	*/
+/* gold: rgb(196,169,164) */
 
 * { box-sizing: border-box; }
 img { max-width: 100%; }
 body {
-	font-family: Quicksand, Helvetica, Arial, Sans-Serif;
-	font-weight: 300;
-	font-size: 18px;
-	color: rgb(196,169,164);
-	background-color: rgb(240,239,247);
+  font-family: Quicksand, Helvetica, Arial, Sans-Serif;
+  font-weight: 300;
+  font-size: 18px;
+  color: rgb(196,169,164);
+  background-color: rgb(240,239,247);
 }
 
 h2 {
-	font-size: 18px;
-	padding: 0;
-	margin-top: 0;
-	margin-bottom: 10px;
+  font-size: 18px;
+  padding: 0;
+  margin-top: 0;
+  margin-bottom: 10px;
 }
 
 hr {
-	width: 64px;
-	border: solid 1px rgb(196,169,164);
+  width: 64px;
 }
 
-p {
-	font-size: 14px;
-}
-
-.site-therapy {
-	position: absolute;
-	color: rgb(196,169,264);
-	display: none !important;
-}
-
-html:not(.touchevents) .site-therapy {
-	display: table !important;
-}
-
-html:not(.touchevents) .site-therapy #title2 {
-	display: none;
-}
-html:not(.touchevents) .site-engineering #title1 {
-	display: none;
-}
-
-.site-engineering {
-	position: relative;
-	top: 5px;
-	left: 5px;
-}
-
-.site-therapy .triangle {
-	stroke: rgb(196,169,264);
-}
-
-.site-engineering .triangle {
-	stroke: rgb(196,169,164);
-}
-
-.line-one {
-	margin-bottom: 2px;
-	font-size: 29px;
-}
-.line-two {
-	font-size: 39px;
-}
-
-.spread {
-	width: 100%;
-	height: 100%;
-	min-width: 420px;
-}
-.block { display: inline-block; }
-
+/* must be above center-override. */
 .center {
-	display: table;
+  display: table;
 }
 
 .center > * {
-	display: table-cell;
-	vertical-align: middle;
-	text-align: center;
+  display: table-cell;
+  vertical-align: middle;
+  text-align: center;
 }
 
+.site-therapy hr {
+  border: solid 1px rgb(196,169,264);
+}
+
+.site-engineering hr {
+  border: solid 1px rgb(196,169,164);
+}
+
+p {
+  font-size: 14px;
+}
+
+.site-therapy {
+  position: absolute;
+  color: rgb(196,169,264);
+}
+
+.site-therapy #title2,
+.site-therapy .info-email-live,
+.site-therapy .info-twitter,
+.site-therapy .info-github,
+.site-engineering #title1,
+.site-engineering .info-phone,
+.site-engineering .info-space,
+.site-engineering .info-email-static,
+.mouse-move-disabled .site-therapy
+{
+  display: none;
+}
+
+.mouse-move-disabled .site-engineering #title1,
+.mouse-move-disabled .site-engineering .info-phone {
+  display: block;
+}
+
+/* if desktop, start out-of-focus instead of waiting for first mouse-move */
+@media screen and (min-width: 1025px) {
+  /** use arbitrary container class to match specifity of other rules. */
+  .spread .site-therapy {
+    display: table;
+  }
+  .spread .mouse-move-disabled .site-engineering #title1,
+  .spread .mouse-move-disabled .site-engineering .info-phone {
+    display: none;
+  }
+}
+
+.rel {
+  position: relative;
+}
+.site-therapy > div {
+  top: -5px;
+  left: -5px;
+}
+
+.site-therapy .triangle {
+  stroke: rgb(196,169,264);
+}
+
+.site-engineering .triangle {
+  stroke: rgb(196,169,164);
+}
+
+.line-one {
+  margin-bottom: 2px;
+  font-size: 29px;
+}
+.line-two {
+  font-size: 39px;
+}
+
+.spread {
+  width: 100%;
+  height: 100%;
+}
+.block { display: inline-block; }
+
 .pad-sm {
-	padding: 10px;
+  padding: 10px;
 }
 
 .pad {
-	padding: 25px;
+  padding: 25px;
 }
 
 .text-dim {
-	color: #b2b2b2;
+  color: #b2b2b2;
 }
 
 .triangle-row {
-	white-space: nowrap;
+  white-space: nowrap;
 }
 
 .triangle {
-	fill: transparent;
-	stroke-width: 2px;
+  fill: transparent;
+  stroke-width: 2px;
 }
 
 /* shift upside-down triangles-left */
 .triangle-up-svg {
-	margin-left: -16px;
-	margin-right: -16px;
+  margin-left: -16px;
+  margin-right: -16px;
 }
 
 .triangle-row-odd {
-	margin-top: -5px;
-	margin-bottom: -5px;
-	margin-left: 2px;
+  margin-top: -5px;
+  margin-bottom: -5px;
+  margin-left: 2px;
 }
 
-@media screen and ( max-height: 700px ){
-	.triangle-row:nth-child(3n),
-	.triangle-row:nth-child(3n),
-	.triangle-row:nth-child(4n),
-	.triangle-row:nth-child(5n) {
-		display: none;
-	}
+@media screen and ( max-height: 669px ){
+  .triangle-rows-top .triangle-row:nth-child(n+3) {
+    display: none;
+  }
+  .triangle-rows-bottom .triangle-row:nth-child(n+4) {
+    display: none;
+  }
+}
+
+@media screen and ( max-width: 1024px ){
+  /* 7 triangles total. Hide triangles based on screen width.  */
+  .triangle-svg:nth-child(-n+2) {
+    display: none;
+  }
+}
+
+@media screen and ( max-width: 377px ){
+  /* 7 triangles total. Hide triangles based on screen width.  */
+  .triangle-svg:nth-child(-n+4) {
+    display: none;
+  }
+}
+
+@media screen and ( max-width: 325px ){
+  /* 7 triangles total. Hide triangles based on screen width.  */
+  .triangle-svg:nth-child(-n+6) {
+    display: none;
+  }
 }
