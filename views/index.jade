@@ -84,6 +84,8 @@ body.spread.mouse-move-disabled
     const therapy = document.getElementsByClassName('site-therapy')[0].firstChild
     const engineering = document.getElementsByClassName('site-engineering')[0].firstChild
     let disableMouseMove = false
+    const innerSensitivy = 1.2
+    const outerSensitivity = 1.0
 
     // reset the global w/h variables on resize
     window.addEventListener('resize', function resize(e) {
@@ -100,18 +102,9 @@ body.spread.mouse-move-disabled
       if (disableMouseMove) return
       document.body.className = document.body.className.replace('mouse-move-disabled', '')
 
-      // out-of-focus
-      const clientX = e.clientX / 20 // sensitivity
-      const clientY = e.clientY / 20
-      const modX = clientX % 10
-      const modY = clientY % 10
-      const x = modX < 5 ? modX : 5 - clientX % 5
-      const y = modY < 5 ? modY : 5 - clientY % 5
-
       // distance to center
-      const xCenter = Math.floor(Math.abs(e.clientX - w/2)) / 2 + w/4
-      const yCenter = Math.floor(Math.abs(e.clientY - h/2)) / 2 + w/4
+      const xCenter = Math.floor(Math.abs(e.clientX - w/2)) / outerSensitivity + w/4
 
-      therapy.style.left = ((w/2) * (xCenter < 0 ? 1 : -1) + (xCenter))/1.2 + 'px'
-      engineering.style.left = ((w/2) * (xCenter < 0 ? 1 : -1) + w - (xCenter))/1.2 + 'px'
+      therapy.style.left = Math.min((xCenter - w/2) / innerSensitivy, 0) + 'px'
+      engineering.style.left = Math.max((w - xCenter - w/2) / innerSensitivy, 5) + 'px'
     })
