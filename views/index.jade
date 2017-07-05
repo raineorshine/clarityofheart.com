@@ -88,6 +88,7 @@ body.spread.mouse-move-disabled
     let disableMouseMove = false
     const innerSensitivy = 1.2
     const outerSensitivity = 1.0
+    const outOfFocusSensitivity = 20
 
     // reset the global w/h variables on resize
     window.addEventListener('resize', function resize(e) {
@@ -104,9 +105,17 @@ body.spread.mouse-move-disabled
       if (disableMouseMove) return
       document.body.className = document.body.className.replace('mouse-move-disabled', '')
 
+      // out-of-focus
+      const clientX = e.clientX / outOfFocusSensitivity
+      const clientY = e.clientY / outOfFocusSensitivity
+      const modX = clientX % 10
+      const modY = clientY % 10
+      const outOfFocusX = modX < 5 ? modX : 5 - clientX % 5
+      const outOfFocusY = modY < 5 ? modY : 5 - clientY % 5
+
       // distance to center
       const xCenter = Math.floor(Math.abs(e.clientX - w/2)) / outerSensitivity + w/4
 
-      therapy.style.left = Math.min((xCenter - w/2) / innerSensitivy, 0) + 'px'
-      engineering.style.left = Math.max((w - xCenter - w/2) / innerSensitivy, 5) + 'px'
+      therapy.style.left = Math.min((xCenter - w/2) / innerSensitivy, 0) + outOfFocusX + 'px'
+      engineering.style.left = Math.max((w - xCenter - w/2) / innerSensitivy, 5) + outOfFocusY + 'px'
     })
