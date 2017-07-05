@@ -10,6 +10,21 @@ body {
   background-color: rgb(240,239,247);
 }
 
+/* pointer-events control */
+div {
+  pointer-events: none;
+}
+h1, h2 {
+  display: inline-block;
+}
+h1, h2, a, .point {
+  pointer-events: auto;
+}
+
+h1 {
+  margin-bottom: 5px;
+}
+
 h2 {
   font-size: 18px;
   padding: 0;
@@ -69,7 +84,7 @@ p {
 
 /* if desktop, start out-of-focus instead of waiting for first mouse-move */
 @media screen and (min-width: 1025px) {
-  /** use arbitrary container class to match specifity of other rules. */
+  /** use arbitrary container class to match specifity of above rules. */
   .spread .site-therapy {
     display: table;
   }
@@ -100,6 +115,8 @@ p {
   font-size: 29px;
 }
 .line-two {
+  margin-bottom: 0;
+  padding-bottom: 0;
   font-size: 39px;
 }
 
