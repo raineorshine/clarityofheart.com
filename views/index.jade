@@ -79,6 +79,103 @@ body.spread.mouse-move-disabled
   +site("Contemplative Psychotherapist", "Cryptocurrency Engineer").site-therapy
   +site("Contemplative Psychotherapist", "Cryptocurrency Engineer").site-engineering
 
+  section.dark.pad-quarter.center.spread
+
+    .nav-content(rel='home')
+      .block.pad
+        h1 Raine Revere is a practicing therapist and cryptocurrency engineer. 
+      .block.pad-lg
+        h2 Learn more about Raine's work in:
+      .block
+        a.nav-link.button.hspace-lg.vspace-sm(href='javascript:void(0);' rel='therapy') Therapy
+        a.nav-link.button.hspace-lg.vspace-sm(href='javascript:void(0);' rel='crypto') Crypto
+
+    .nav-content(rel='therapy').hide
+
+      .block.pad.left.clear
+        h1.vspace Therapy
+        p I offer an open, nonjudgmental space for clients to work through whatever is holding them back in life. My clients appreciate the openness that is held in session and the clarity that they discover when they have the space to explore everything they are feeling.
+
+        p Specialties: Adults, Teens, Couples, LGBTQIAAP, Relationships, Poly, Mindfulness, Personal Growth, Self-Sabotage, Sexual Abuse, Anxiety, Shame.
+
+        p I work well with adults who:
+        ul
+          li Want a stable, attentive, spacious listener
+          li Value a therapist who models personal growth, courage, and vulnerability
+
+        p I work well with teens who:
+        ul
+          li Are highly sensitive and intelligent
+          li Struggle with bullying 
+          li Need an adult who respects them and can understand their world
+
+        p I work well with couples who:
+        ul
+          li Are willing to hear how they contribute to their partner's defensiveness
+          li Are willing to look inside at what they can change
+          li Are willing to be vulnerable
+
+        #therapy-profile.vspace-giant
+          #profile-pic
+            img.media-left(src='/images/professional1.jpg' width='400')
+
+          +triangle-row
+
+          #profile-text.vspace
+            p Raine Revere graduated from Naropa University with a Masters Degree in Contemplative Psychotherapy. Raine openly identifies as genderfluid and embraces all identities as a path of personal and collective growth. Outside of doing counseling work, Raine works as an cryptocurrency engineer and educator.
+
+            p Contact 
+              a(href='mailto:raine@clarityofheart.com') raine@clarityofheart.com
+              |  or call 720-319-8080 to schedule a session.
+
+          +triangle-row
+
+      .block
+        a.nav-link.button.hspace-lg(href='javascript:void(0);' rel='home') Back
+
+    .nav-content(rel='crypto').hide
+      .block.pad.left
+        h1.vspace.center Crypto
+        p Raine Revere is a respected smart contract developer in the Ethereum community. Raine's areas of expertise include smart contract security and high-level architecture. As the lead engineer for ShapeShift's <a href='https://prism.exchange' target='_blank'>Prism</a> platform, Raine helped develop a decentralized digital asset management platform that secures users' funds entirely on the Ethereum network.
+
+        img.vspace(src='/images/denver-meetup1.jpg')
+        img.vspace(src='/images/denver-meetup2.jpg')
+
+        .vspace-giant.text-center
+          +triangle-row
+
+          h1 Prism Tour
+          ul.nobullets
+            li
+              strike 7/18/17 Denver
+            li
+              strike 7/28/17 Montreal
+            li 
+              span.text-dim 8/18/17 
+              |  San Fransisco
+            li
+              span.text-dim TBD
+              |  Atlanta
+            li 
+              span.text-dim 9/24/17 
+              |  Houston
+            li
+              span.text-dim TBD
+              |  Toronto
+            li 
+              span.text-dim 12/12/17 
+              |  New York
+
+          +triangle-row
+
+        .text-center.vspace-lg
+          p Contact 
+            a(href='mailto:raine@clarityofheart.com') raine@clarityofheart.com
+            |  to say hi :)
+
+      .block
+        a.nav-link.button.hspace-lg(href='javascript:void(0);' rel='home') Back
+
   script(type="text/javascript").
     // cache width, height, and elements
     let h = document.body.offsetHeight
@@ -119,3 +216,28 @@ body.spread.mouse-move-disabled
       therapy.style.left = Math.min((xCenter - w/2) / innerSensitivy, 0) + outOfFocusX + 'px'
       engineering.style.left = Math.max((w - xCenter - w/2) / innerSensitivy, 5) + outOfFocusY + 'px'
     })
+
+    const navContent = document.getElementsByClassName('nav-content')
+    function navigate(rel) {
+
+      // hide or show all content sections
+      for (var i=0; i<navContent.length; i++) {
+        let contentRel = navContent[i].getAttribute('rel')
+        navContent[i].className = navContent[i].className.replace(/\bhide\b/, '')
+        if (contentRel !== rel) {
+          navContent[i].className += ' hide'
+        }
+      }
+    }
+
+    // click events
+    const navLinks = document.getElementsByClassName('nav-link')
+    for (var i=0; i<navLinks.length; i++) {
+      (i => {
+        navLinks[i].addEventListener('click', e => {
+          e.preventDefault()
+          const rel = navLinks[i].getAttribute('rel')
+          navigate(rel)
+        })
+      })(i)
+    }

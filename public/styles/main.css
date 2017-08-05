@@ -36,6 +36,33 @@ hr {
   width: 64px;
 }
 
+p {
+  font-size: 14px;
+}
+
+ul {
+  margin-bottom: 1.5em;
+}
+
+strike {
+  opacity: 0.5;
+}
+
+.nobullets {
+  list-style: none;
+  padding: 0;
+}
+
+.nav-content p {
+  font-size: 18px;
+  line-height: 1.5;
+  margin-bottom: 1em;
+}
+
+.clear {
+  overflow: hidden;
+}
+
 /* must be above center-override. */
 .center {
   display: table;
@@ -47,16 +74,46 @@ hr {
   text-align: center;
 }
 
+.left { text-align: left; }
+.right { text-align: right; }
+
+.hide {
+  display: none;
+}
+
+.media-left {
+  margin-bottom: 40px;
+}
+
+#profile-pic {
+  text-align: center;
+}
+
+#therapy-profile .triangle-row {
+  text-align: center;
+}
+
+@media screen and ( min-width: 1140px ) {
+  .media-left {
+    float: left;
+    margin-right: 40px;
+  }
+
+  #therapy-profile .triangle-row {
+    text-align: left;
+  }
+
+  #profile-text {
+    max-width: 780px;
+  }
+}
+
 .site-therapy hr {
   border: solid 1px rgb(196,169,264);
 }
 
 .site-engineering hr {
   border: solid 1px rgb(196,169,164);
-}
-
-p {
-  font-size: 14px;
 }
 
 .site-therapy {
@@ -102,11 +159,12 @@ p {
   left: -5px;
 }
 
-.site-therapy .triangle {
+.triangle {
   stroke: rgb(196,169,264);
 }
 
-.site-engineering .triangle {
+.site-engineering .triangle,
+.light .triangle {
   stroke: rgb(196,169,164);
 }
 
@@ -120,18 +178,47 @@ p {
   font-size: 39px;
 }
 
+.hspread {
+  width: 100%;
+}
+
 .spread {
   width: 100%;
   height: 100%;
 }
-.block { display: inline-block; }
+.block { display: block; }
 
-.pad-sm {
-  padding: 10px;
+.space { margin: 25px; }
+.space-sm { margin: 10px; }
+.space-lg { margin: 50px; }
+.space-giant { margin: 100px; }
+
+.hspace { margin-left: 25px; margin-right: 25px; }
+.hspace-sm { margin-left: 10px; margin-right: 10px; }
+.hspace-lg { margin-left: 50px; margin-right: 50px; }
+.hspace-giant { margin-left: 100px; margin-right: 100px; }
+
+.vspace { margin-top: 25px; margin-bottom: 25px; }
+.vspace-sm { margin-top: 10px; margin-bottom: 10px; }
+.vspace-lg { margin-top: 50px; margin-bottom: 50px; }
+.vspace-giant { margin-top: 100px; margin-bottom: 100px; }
+
+.pad { padding: 25px; }
+.pad-sm { padding: 10px; }
+.pad-lg { padding: 50px; }
+.pad-giant { padding: 100px; }
+
+.pad-quarter {
+  padding-top: 25vh;
+  padding-bottom: 25vh;
+  padding-left: 15vw;
+  padding-right: 15vw;
 }
-
-.pad {
-  padding: 25px;
+@media screen and ( max-width: 800px ) {
+  .pad-quarter {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
 }
 
 .text-dim {
@@ -157,6 +244,28 @@ p {
   margin-top: -5px;
   margin-bottom: -5px;
   margin-left: 2px;
+}
+
+.button {
+  padding: 20px 50px;
+  font-size: 25px;
+  display: inline-block;
+  min-width: 8em;
+}
+
+section {
+  margin-top: 40px;
+  max-height: 100vh;
+}
+
+.dark {
+  color: #eee;
+  background-color: #1b0c49;
+}
+
+.dark .button {
+  border: solid 1px #eee;
+  color: #eee;
 }
 
 @media screen and ( max-height: 669px ){
@@ -188,3 +297,13 @@ p {
     display: none;
   }
 }
+
+// #therapy-profile {
+//   width: 995px;
+// }
+
+// @media screen and ( min-width: 975px ) {
+//   #therapy-profile {
+//     width: 995px;
+//   }
+// }
