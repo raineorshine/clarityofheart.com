@@ -7,7 +7,7 @@ body {
   font-weight: 300;
   font-size: 18px;
   color: rgb(196,169,164);
-  background-color: rgb(240,239,247);
+  background-color: #fff;
 }
 
 /* pointer-events control */
@@ -46,6 +46,11 @@ ul {
 
 strike {
   opacity: 0.5;
+}
+
+/* don't double dim */
+strike .text-dim {
+  color: inherit;
 }
 
 .nobullets {

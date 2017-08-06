@@ -145,11 +145,13 @@ body.spread.mouse-move-disabled
           +triangle-row
 
           h1 Prism Tour
-          ul.nobullets
+          ul#tour.nobullets
             li
-              strike 7/18/17 Denver
+              span.text-dim 7/18/17 
+              |  Denver
             li
-              strike 7/28/17 Montreal
+              span.text-dim 7/28/17 
+              |  Montreal
             li 
               span.text-dim 8/18/17 
               |  San Fransisco
@@ -218,15 +220,29 @@ body.spread.mouse-move-disabled
     })
 
     const navContent = document.getElementsByClassName('nav-content')
+
+    // navigate to a section with a specific rel attribute
     function navigate(rel) {
 
       // hide or show all content sections
       for (var i=0; i<navContent.length; i++) {
-        let contentRel = navContent[i].getAttribute('rel')
-        navContent[i].className = navContent[i].className.replace(/\bhide\b/, '')
-        if (contentRel !== rel) {
-          navContent[i].className += ' hide'
-        }
+        (i => {
+          let contentRel = navContent[i].getAttribute('rel')
+          navContent[i].className = navContent[i].className.replace(/\bhide\b/, '')
+
+          // hide other sections
+          if (contentRel !== rel) {
+            navContent[i].className += ' hide'
+          }
+          // scroll desired section into view
+          else {
+            // delay briefly so that other elements are hidden first
+            // otherwise the calculations will be off
+            setTimeout(() => {
+              navContent[i].scrollIntoView(true)
+            }, 10)
+          }
+        })(i)
       }
     }
 
@@ -236,8 +252,31 @@ body.spread.mouse-move-disabled
       (i => {
         navLinks[i].addEventListener('click', e => {
           e.preventDefault()
+
+          // navigate to section
           const rel = navLinks[i].getAttribute('rel')
           navigate(rel)
         })
       })(i)
     }
+
+    // surround an element in <strike>
+    function strike(el) {
+      el.innerHTML = `<strike>${el.innerHTML}</strike>`
+    }
+
+    // parse the tour date from the tour item element
+    function getTourDate(el) {
+      const space = el.innerText.trim().indexOf(' ')
+      return new Date(el.innerText.trim().slice(0, space))
+    }
+
+    // strike through past tour dates
+    const tour = document.getElementById('tour')
+    for (var i=0; i<tour.childNodes.length; i++) {
+      let item = tour.childNodes[i]
+      if (getTourDate(item) < new Date()) {
+        strike(item)
+      }
+    }
+
