@@ -179,6 +179,10 @@ body.spread.mouse-move-disabled
         a.nav-link.button.hspace-lg(href='javascript:void(0);' rel='home') Back
 
   script(type="text/javascript").
+
+    // wrap js in IIFE to create local scope
+    (() => {
+
     // cache width, height, and elements
     let h = document.body.offsetHeight
     let w = document.body.offsetWidth
@@ -279,4 +283,6 @@ body.spread.mouse-move-disabled
         strike(item)
       }
     }
+
+    })()
 
