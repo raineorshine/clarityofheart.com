@@ -113,6 +113,10 @@ strike .text-dim {
   }
 }
 
+.site-therapy, .site-engineering {
+  overflow: hidden; /* Prevent horizontal scroll */
+}
+
 .site-therapy hr {
   border: solid 1px rgb(196,169,264);
 }
