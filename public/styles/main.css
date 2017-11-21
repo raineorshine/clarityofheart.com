@@ -53,6 +53,10 @@ strike .text-dim {
   color: inherit;
 }
 
+a {
+  text-decoration: underline;
+}
+
 .nobullets {
   list-style: none;
   padding: 0;
@@ -211,6 +215,7 @@ strike .text-dim {
 .vspace-sm { margin-top: 10px; margin-bottom: 10px; }
 .vspace-lg { margin-top: 50px; margin-bottom: 50px; }
 .vspace-giant { margin-top: 100px; margin-bottom: 100px; }
+.vspace-mega { margin-top: 150px; margin-bottom: 150px; }
 
 .pad { padding: 25px; }
 .pad-sm { padding: 10px; }
@@ -260,6 +265,7 @@ strike .text-dim {
   font-size: 25px;
   display: inline-block;
   min-width: 8em;
+  text-decoration: none;
 }
 
 section {
