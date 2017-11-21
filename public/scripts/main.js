@@ -11,6 +11,14 @@ const innerSensitivy = 1.2
 const outerSensitivity = 1.0
 const outOfFocusSensitivity = 20
 
+// navigate to the correct page when the user navigates forward/back
+window.onpopstate = function(event) {
+  if (event) {
+    // navigate home if the currentPage is null
+    navigate(event.state && event.state.currentPage || 'home', true)
+  }
+}
+
 // reset the global w/h variables on resize
 window.addEventListener('resize', function resize(e) {
   h = document.body.offsetHeight
@@ -44,7 +52,10 @@ document.body.addEventListener('mousemove', function move(e) {
 const navContent = document.getElementsByClassName('nav-content')
 
 // navigate to a section with a specific rel attribute
-function navigate(rel) {
+function navigate(rel, replace=false) {
+
+  // push or replace the history
+  history[replace ? 'replaceState' : 'pushState']({ currentPage: rel }, rel, rel === 'home' ? '/' : rel)
 
   // hide or show all content sections
   for (var i=0; i<navContent.length; i++) {
@@ -100,6 +111,15 @@ for (var i=0; i<tour.childNodes.length; i++) {
   if (getTourDate(item) < new Date()) {
     strike(item)
   }
+}
+
+// MAIN
+
+// navigate to correct page on load
+const currentPage = window.location.pathname.slice(1)
+const pages = ['therapy', 'crypto']
+if (pages.includes(currentPage)) {
+  navigate(currentPage, true)
 }
 
 })()

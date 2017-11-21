@@ -9,7 +9,8 @@ app.use(express.static(__dirname + '/public'))
 app.use(favicon(__dirname + '/public/favicon.ico'))
 app.use(bodyParser())
 
-app.get('/', function(req, res) {
+// accept all paths for client-side routing
+app.get('*', function(req, res) {
 	res.render('index')
 })
 
