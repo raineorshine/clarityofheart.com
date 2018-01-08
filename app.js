@@ -10,6 +10,11 @@ app.use(favicon(__dirname + '/public/favicon.ico'))
 app.use(bodyParser())
 
 // accept all paths for client-side routing
+app.get('/calendar', function(req, res) {
+  res.render('calendar')
+})
+
+// accept all paths for client-side routing
 app.get('*', function(req, res) {
 	res.render('index')
 })

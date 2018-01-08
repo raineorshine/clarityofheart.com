@@ -38,7 +38,7 @@ mixin triangle-row(numTrianglesInRow=7)
 mixin site(title1, title2)
   - numRowsTop = 3
   - numRowsBottom = 5
-  .spread.center.pad&attributes(attributes)
+  .spread.center.pad.nopointer&attributes(attributes)
     .center-wrapper.rel
       .triangle-rows-top
         - for (var r=0; r<numRowsTop; r++)

@@ -11,7 +11,7 @@ body {
 }
 
 /* pointer-events control */
-div {
+.nopointer {
   pointer-events: none;
 }
 h1, h2 {
@@ -223,8 +223,6 @@ a {
 .pad-giant { padding: 100px; }
 
 .pad-quarter {
-  padding-top: 25vh;
-  padding-bottom: 25vh;
   padding-left: 15vw;
   padding-right: 15vw;
 }
@@ -313,12 +311,6 @@ section {
   }
 }
 
-// #therapy-profile {
-//   width: 995px;
-// }
-
-// @media screen and ( min-width: 975px ) {
-//   #therapy-profile {
-//     width: 995px;
-//   }
-// }
+.calendly-inline-widget {
+  min-width: 320px;
+}
