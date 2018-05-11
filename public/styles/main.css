@@ -59,11 +59,17 @@ strike .text-dim {
 
 a {
   text-decoration: underline;
+  word-break: break-word;
 }
 
 .nobullets {
   list-style: none;
   padding: 0;
+}
+
+.nav-content {
+  max-width: calc(100vw - 50px);
+  overflow: auto;
 }
 
 .nav-content p {
@@ -87,8 +93,11 @@ a {
   text-align: center;
 }
 
+.text-center { text-align: center; }
 .left { text-align: left; }
 .right { text-align: right; }
+
+.inline { display: inline-block; }
 
 .hide {
   display: none;
@@ -100,6 +109,11 @@ a {
 
 #profile-pic {
   text-align: center;
+}
+
+#therapy-profile {
+  margin-top: 150px;
+  margin-bottom: 50px;
 }
 
 #therapy-profile .triangle-row {
