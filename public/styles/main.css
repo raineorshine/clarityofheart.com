@@ -26,6 +26,10 @@ h1 {
 }
 
 h2 {
+  font-size: 24px;
+}
+
+h2.small {
   font-size: 18px;
   padding: 0;
   margin-top: 0;
@@ -279,6 +283,10 @@ section {
 .dark .button {
   border: solid 1px #eee;
   color: #eee;
+}
+
+.dark .button-noborder {
+  border: none;
 }
 
 @media screen and ( max-height: 669px ){
