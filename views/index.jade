@@ -5,17 +5,17 @@ head
   meta(charset='utf-8')
   meta(name="viewport" content="width=device-width, initial-scale=1")
   title Raine Revere
-  link(rel='stylesheet' type='text/css' href='http://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.1.1/css/bootstrap.min.css')
-  link(rel='stylesheet' type='text/css' href='http://fonts.googleapis.com/css?family=Quicksand')
+  link(rel='stylesheet' type='text/css' href='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.1.1/css/bootstrap.min.css')
+  link(rel='stylesheet' type='text/css' href='https://fonts.googleapis.com/css?family=Quicksand')
   link(rel='stylesheet' type='text/css' href='/styles/main.css')
   include analytics.html
 
 mixin triangle(triangleSize=40, triangleBorderSize=2)
-  svg.triangle-svg(width=triangleSize height=triangleSize viewBox="0 0 " + (triangleSize + 10) + " " + (triangleSize + 10) xmlns="http://www.w3.org/2000/svg")
+  svg.triangle-svg(width=triangleSize height=triangleSize viewBox="0 0 " + (triangleSize + 10) + " " + (triangleSize + 10) xmlns="https://www.w3.org/2000/svg")
     polygon.triangle(points=((triangleSize + triangleBorderSize)/2) + "," + triangleBorderSize*3 + " " + triangleSize + "," + triangleSize + " " + triangleBorderSize + "," + triangleSize)
 
 mixin triangleUp(triangleSize=40, triangleBorderSize=2)
-  svg.triangle-svg.triangle-up-svg(width=triangleSize height=triangleSize viewBox="0 0 " + (triangleSize + 10) + " " + (triangleSize + 10) xmlns="http://www.w3.org/2000/svg")
+  svg.triangle-svg.triangle-up-svg(width=triangleSize height=triangleSize viewBox="0 0 " + (triangleSize + 10) + " " + (triangleSize + 10) xmlns="https://www.w3.org/2000/svg")
     polygon.triangle(points=
       ((triangleSize + triangleBorderSize)/2) + "," + (triangleSize - triangleBorderSize*3) + " " +
       triangleBorderSize + "," + triangleBorderSize + " " + 
