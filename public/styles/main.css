@@ -7,13 +7,9 @@ body {
   font-weight: 300;
   font-size: 18px;
   color: rgb(196,169,164);
-  background-color: #fff;
+  background-color: #ff2525;
 }
 
-/* pointer-events control */
-.nopointer {
-  pointer-events: none;
-}
 h1, h2 {
   display: inline-block;
 }
@@ -23,6 +19,7 @@ h1, h2, a, .point {
 
 h1 {
   margin-bottom: 5px;
+  cursor: default;
 }
 
 h2 {
@@ -62,27 +59,7 @@ a {
   word-break: break-word;
 }
 
-.nobullets {
-  list-style: none;
-  padding: 0;
-}
 
-.nav-content {
-  max-width: calc(100vw - 50px);
-  overflow: auto;
-}
-
-.nav-content p {
-  font-size: 18px;
-  line-height: 1.5;
-  margin-bottom: 1em;
-}
-
-.clear {
-  overflow: hidden;
-}
-
-/* must be above center-override. */
 .center {
   display: table;
 }
@@ -93,125 +70,15 @@ a {
   text-align: center;
 }
 
+.clear { overflow: hidden; }
 .text-center { text-align: center; }
 .left { text-align: left; }
 .right { text-align: right; }
-
 .inline { display: inline-block; }
+.hide { display: none; }
+.rel { position: relative; }
 
-.hide {
-  display: none;
-}
-
-.media-left {
-  margin-bottom: 40px;
-}
-
-#profile-pic {
-  text-align: center;
-}
-
-#therapy-profile {
-  margin-top: 150px;
-  margin-bottom: 50px;
-}
-
-#therapy-profile .triangle-row {
-  text-align: center;
-}
-
-@media screen and ( min-width: 1140px ) {
-  .media-left {
-    float: left;
-    margin-right: 40px;
-  }
-
-  #therapy-profile .triangle-row {
-    text-align: left;
-  }
-
-  #profile-text {
-    max-width: 780px;
-  }
-}
-
-.site-therapy, .site-engineering {
-  overflow: hidden; /* Prevent horizontal scroll */
-}
-
-.site-therapy hr {
-  border: solid 1px rgb(196,169,264);
-}
-
-.site-engineering hr {
-  border: solid 1px rgb(196,169,164);
-}
-
-.site-therapy {
-  position: absolute;
-  color: rgb(196,169,264);
-}
-
-.site-therapy #title2,
-.site-therapy .info-email-live,
-.site-therapy .info-twitter,
-.site-therapy .info-github,
-.site-engineering #title1,
-.site-engineering .info-phone,
-.site-engineering .info-space,
-.site-engineering .info-email-static,
-.mouse-move-disabled .site-therapy
-{
-  display: none;
-}
-
-.mouse-move-disabled .site-engineering #title1,
-.mouse-move-disabled .site-engineering .info-phone {
-  display: block;
-}
-
-/* if desktop, start out-of-focus instead of waiting for first mouse-move */
-@media screen and (min-width: 1025px) {
-  /** use arbitrary container class to match specifity of above rules. */
-  .spread .site-therapy {
-    display: table;
-  }
-  .spread .mouse-move-disabled .site-engineering #title1,
-  .spread .mouse-move-disabled .site-engineering .info-phone {
-    display: none;
-  }
-}
-
-.rel {
-  position: relative;
-}
-.site-therapy > div {
-  top: -5px;
-  left: -5px;
-}
-
-.triangle {
-  stroke: rgb(196,169,264);
-}
-
-.site-engineering .triangle,
-.light .triangle {
-  stroke: rgb(196,169,164);
-}
-
-.line-one {
-  margin-bottom: 2px;
-  font-size: 29px;
-}
-.line-two {
-  margin-bottom: 0;
-  padding-bottom: 0;
-  font-size: 39px;
-}
-
-.hspread {
-  width: 100%;
-}
+.hspread { width: 100%; }
 
 .spread {
   width: 100%;
@@ -251,88 +118,19 @@ a {
   }
 }
 
-.text-dim {
-  color: #b2b2b2;
-}
-
-.triangle-row {
-  white-space: nowrap;
-}
-
-.triangle {
-  fill: transparent;
-  stroke-width: 2px;
-}
-
-/* shift upside-down triangles-left */
-.triangle-up-svg {
-  margin-left: -16px;
-  margin-right: -16px;
-}
-
-.triangle-row-odd {
-  margin-top: -5px;
-  margin-bottom: -5px;
-  margin-left: 2px;
-}
-
-.button {
-  padding: 20px 50px;
-  font-size: 25px;
-  display: inline-block;
-  min-width: 8em;
-  text-decoration: none;
-}
-
 section {
-  margin-top: 40px;
   max-height: 100vh;
 }
 
-.dark {
-  color: #eee;
-  background-color: #1b0c49;
+.light {
+  background-color: #25e2ff;
 }
 
-.dark .button {
-  border: solid 1px #eee;
-  color: #eee;
+@keyframes pulsered {
+  from { background-color: #ff2525; }
+  to   { background-color: #ff258a; }
 }
 
-.dark .button-noborder {
-  border: none;
-}
-
-@media screen and ( max-height: 669px ){
-  .triangle-rows-top .triangle-row:nth-child(n+3) {
-    display: none;
-  }
-  .triangle-rows-bottom .triangle-row:nth-child(n+4) {
-    display: none;
-  }
-}
-
-@media screen and ( max-width: 1024px ){
-  /* 7 triangles total. Hide triangles based on screen width.  */
-  .triangle-svg:nth-child(-n+2) {
-    display: none;
-  }
-}
-
-@media screen and ( max-width: 377px ){
-  /* 7 triangles total. Hide triangles based on screen width.  */
-  .triangle-svg:nth-child(-n+4) {
-    display: none;
-  }
-}
-
-@media screen and ( max-width: 325px ){
-  /* 7 triangles total. Hide triangles based on screen width.  */
-  .triangle-svg:nth-child(-n+6) {
-    display: none;
-  }
-}
-
-.calendly-inline-widget {
-  min-width: 320px;
+.pulsered {
+  animation: pulsered 10s ease-in-out infinite alternate;
 }

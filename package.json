@@ -5,7 +5,6 @@
   "dependencies": {
     "body-parser": "^1",
     "express": "^4",
-    "jade": "^1",
-    "serve-favicon": "^2"
+    "jade": "^1"
   }
 }
